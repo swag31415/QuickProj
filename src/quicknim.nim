@@ -43,6 +43,13 @@ run("git init")
 run("git add .")
 run("git commit -m \"Empty Nim Repo\"")
 
+# Add a readme
+writeFile("readme.md", gen_readme(name, lname, desc))
+
+# Commit the readme
+run("git add .")
+run("git commit -m \"Added a readme\"")
+
 # Add a .gitignore
 writeFile(".gitignore", gitignore)
 
