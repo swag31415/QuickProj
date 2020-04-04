@@ -31,3 +31,21 @@ proc gen_nim*(name: string): string =
   return "## " + name +
          "\n" +
          "\n"
+
+proc gen_readme*(name, prog_name, desc: string): string =
+  return "# " + name + "\n" +
+         "" + desc + "\n" +
+         "\n" +
+         "## Usage\n" +
+         "Run with nimble\n" +
+         "\n" +
+         "\'\'\'bash\n" +
+         "nim run " + prog_name + "\n" +
+         "\'\'\'\n" +
+         "\n" +
+         "## Program Requirements\n" +
+         "[Nim](https://nim-lang.org/) version 1.0.6 or greater\n" +
+         "[Nimble](https://github.com/nim-lang/nimble)\n" +
+         "\n" +
+         "## License\n" +
+         "[MIT](https://choosealicense.com/licenses/mit/)"
