@@ -4,9 +4,9 @@ A tool to quickly setup a binary nim project
 ## Usage
 Run with nimble
 
-'''bash
-nim run quicknim
-'''
+```bash
+nimble run quicknim
+```
 
 ## Program Requirements
 [Nim](https://nim-lang.org/) version 1.0.6 or greater

@@ -39,9 +39,9 @@ proc gen_readme*(name, prog_name, desc: string): string =
          "## Usage\n" +
          "Run with nimble\n" +
          "\n" +
-         "\'\'\'bash\n" +
-         "nim run " + prog_name + "\n" +
-         "\'\'\'\n" +
+         "```bash\n" +
+         "nimble run " + prog_name + "\n" +
+         "```\n" +
          "\n" +
          "## Program Requirements\n" +
          "[Nim](https://nim-lang.org/) version 1.0.6 or greater\n" +
