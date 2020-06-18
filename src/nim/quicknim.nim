@@ -1,9 +1,9 @@
-## Main 
+## QuickNim
 
 import os
 import strutils
 
-import utils
+import ../utils
 import files
 
 # Get name of project (no spaces) and project description

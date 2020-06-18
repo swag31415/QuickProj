@@ -1,0 +1,3 @@
+## Main
+
+import nim/quicknim

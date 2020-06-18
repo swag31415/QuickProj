@@ -1,11 +1,11 @@
-# QuickNim
-A tool to quickly setup a binary nim project
+# QuickProj
+A tool to quickly setup a nim or html project
 
 ## Usage
 Run with nimble
 
 ```bash
-nimble run quicknim
+nimble run quickproj
 ```
 
 ## Program Requirements
