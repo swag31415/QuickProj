@@ -14,7 +14,7 @@ let desc = ask("Enter Project Desc")
 let lname = name.toLower()
 
 # Sets path to project on desktop
-let dir = expandTilde("~\\Desktop\\" + name)
+let dir = expandTilde("~\\Desktop\\" & name)
 
 # Creates project directory
 if existsOrCreateDir(dir): 
@@ -27,14 +27,14 @@ setCurrentDir(dir)
 
 # Make the .nimble file
 let nimble_data = gen_nimble("0.1", "swag31415", desc, lname, "cpp")
-writeFile(lname + ".nimble", nimble_data)
+writeFile(lname & ".nimble", nimble_data)
 
 # Make the src dir
 createDir("src")
 
 # Make the "main" nim file
 let nim_data = gen_nim(name)
-writeFile("src\\" + lname + ".nim", nim_data)
+writeFile("src\\" & lname & ".nim", nim_data)
 
 # Create git repo
 run("git init")

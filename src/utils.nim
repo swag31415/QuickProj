@@ -23,9 +23,3 @@ proc wait_and_exit*(milsecs = 500) =
 
 proc run*(command: string) =
   discard execShellCmd(command)
-
-proc `+`*(a, b: string): string =
-  var ab = ""
-  ab.add(a)
-  ab.add(b)
-  return ab

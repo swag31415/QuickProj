@@ -1,51 +1,58 @@
 ## files
 
-import utils
+import strutils
 
-const gitignore* = "## .gitignore\n" +
-                   "\n" +
-                   "# Windows executables\n" +
-                   "*.exe\n" +
-                   "*.dll\n" +
-                   "\n" +
-                   "# Editors and IDEs project files and folders\n" +
-                   ".vscode"
+const gitignore* = """## .gitignore
+
+# Windows executables
+*.exe
+*.dll
+
+# Editors and IDEs project files and folders
+.vscode
+"""
+
+const nimble = """## Package
+
+version       = "$#"
+author        = "$#"
+description   = "$#"
+license       = "MIT"
+srcDir        = "src"
+bin           = @["$#"]
+
+backend       = "$#"
+
+# Dependencies
+
+requires "nim >= 1.0.6"
+"""
+
+const nim = "## $#\n\n"
+
+const readme = """# $#
+$#
+
+## Usage
+Run with nimble
+
+```bash
+nimble run $#
+```
+
+## Program Requirements
+[Nim](https://nim-lang.org/) version 1.0.6 or greater
+[Nimble](https://github.com/nim-lang/nimble)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+"""
 
 proc gen_nimble*(version, author, desc, name, backend: string): string =
-  return "## Package\n" +
-         "\n" +
-         "version       = \"" + version + "\"\n" +
-         "author        = \"" + author + "\"\n" +
-         "description   = \"" + desc + "\"\n" +
-         "license       = \"MIT\"\n" +
-         "srcDir        = \"src\"\n" +
-         "bin           = @[\"" + name + "\"]\n" +
-         "\n" +
-         "backend       = \"" + backend + "\"\n" +
-         "\n" +
-         "# Dependencies\n" +
-         "\n" +
-         "requires \"nim >= 1.0.6\"\n"
+  return nimble % [version, author, desc, name, backend]
 
 proc gen_nim*(name: string): string =
-  return "## " + name +
-         "\n" +
-         "\n"
+  return nim % [name]
 
 proc gen_readme*(name, prog_name, desc: string): string =
-  return "# " + name + "\n" +
-         "" + desc + "\n" +
-         "\n" +
-         "## Usage\n" +
-         "Run with nimble\n" +
-         "\n" +
-         "```bash\n" +
-         "nimble run " + prog_name + "\n" +
-         "```\n" +
-         "\n" +
-         "## Program Requirements\n" +
-         "[Nim](https://nim-lang.org/) version 1.0.6 or greater\n" +
-         "[Nimble](https://github.com/nim-lang/nimble)\n" +
-         "\n" +
-         "## License\n" +
-         "[MIT](https://choosealicense.com/licenses/mit/)"
+  return readme % [name, desc, prog_name]
