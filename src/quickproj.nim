@@ -5,6 +5,7 @@ import strutils
 
 import utils
 import nim/quicknim
+import html/quickhtml
 
 # Get name of project (no spaces) and project description
 let name = ask("Enter Project Name").replace(' ', '_')
@@ -22,7 +23,11 @@ if existsOrCreateDir(dir):
 # Sets the current directory to the project directory
 setCurrentDir(dir)
 
-quicknim.run(name, desc)
+# Choose language and generate accordingly
+case choose("What kind of project do you want to generate?", ["Nim", "HTML"]):
+  of 1: quicknim.run(name, desc)
+  of 2: quickhtml.run(name, desc)
+  else: discard
 
 # Open VS Code
 run("code -n .")
