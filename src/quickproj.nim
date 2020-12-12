@@ -28,6 +28,20 @@ proc nim_run(name, desc: string) =
   write_template(&"{name}.nimble", "nim/tmp.nimble", name, desc)
   add_and_commit("Set up empty nim repo")
 
+proc ejs_run(name, desc: string) =
+  run("git init")
+  write_template("readme.md", "expressjs/readme.md", name, desc)
+  add_and_commit("Added readme")
+  write_template(".gitignore", "expressjs/.gitignore", name, desc)
+  add_and_commit("Added gitignore")
+  write_template("app.js", "expressjs/app.js", name, desc)
+  createDir("views")
+  write_template("views/index.ejs", "expressjs/index.ejs", name, desc)
+  run("npm init --yes")
+  run("npm install express")
+  run("npm install ejs")
+  add_and_commit("Set up basic ExpressJS repo")
+
 # Get name of project (no spaces) and project description
 let name = ask("Enter Project Name").replace(' ', '_')
 let desc = ask("Enter Project Desc")
@@ -45,9 +59,10 @@ if existsOrCreateDir(dir):
 setCurrentDir(dir)
 
 # Choose language and generate accordingly
-case choose("What kind of project do you want to generate?", ["Nim", "Python"]):
+case choose("What kind of project do you want to generate?", ["Nim", "Python", "ExpressJS"]):
   of 1: nim_run(name, desc)
   of 2: py_run(name, desc)
+  of 3: ejs_run(name, desc)
   else: discard
 
 # Open VS Code
