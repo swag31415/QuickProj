@@ -42,6 +42,19 @@ proc ejs_run(name, desc: string) =
   run("npm install ejs")
   add_and_commit("Set up basic ExpressJS repo")
 
+proc html_run(name, desc: string) =
+  run("git init")
+  write_template("readme.md", "html/readme.md", name, desc)
+  add_and_commit("Added readme")
+  write_template(".gitignore", "html/.gitignore", name, desc)
+  add_and_commit("Added gitignore")
+  write_template("index.html", "html/index.html", name, desc)
+  createDir("js")
+  write_template("js/main.js", "html/js/main.js", name, desc)
+  createDir("css")
+  write_template("css/main.css", "html/css/main.css", name, desc)
+  add_and_commit("Set up basic HTML repo")
+
 # Get name of project (no spaces) and project description
 let name = ask("Enter Project Name").replace(' ', '_')
 let desc = ask("Enter Project Desc")
@@ -59,10 +72,11 @@ if existsOrCreateDir(dir):
 setCurrentDir(dir)
 
 # Choose language and generate accordingly
-case choose("What kind of project do you want to generate?", ["Nim", "Python", "ExpressJS"]):
+case choose("What kind of project do you want to generate?", ["Nim", "Python", "ExpressJS", "HTML"]):
   of 1: nim_run(name, desc)
   of 2: py_run(name, desc)
   of 3: ejs_run(name, desc)
+  of 4: html_run(name, desc)
   else: discard
 
 # Open VS Code
