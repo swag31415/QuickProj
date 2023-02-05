@@ -1,8 +1,11 @@
-## .gitignore 
- 
-# Windows executables 
-*.exe 
-*.dll 
- 
-# Editors and IDEs project files and folders 
-.vscode 
+## .gitignore
+
+# Windows executables
+*.exe
+*.dll
+
+# Editors and IDEs project files and folders
+.vscode
+
+# templates
+templates
